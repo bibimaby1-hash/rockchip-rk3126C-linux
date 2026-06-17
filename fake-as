@@ -1,0 +1,2 @@
+#!/bin/bash
+exec arm-linux-musleabihf-as -march=armv7-a -mfpu=vfpv4 "$@"

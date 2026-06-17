@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ "$*" == *".lds.S"* ]]; then
+    # Para o script do linker, passamos a FPU também para evitar o erro de ABI conflitante
+    exec arm-linux-musleabihf-gcc -march=armv7-a -mfpu=vfpv4 -mfloat-abi=hard -D__LINUX_ARM_ARCH__=7 "$@"
+else
+    # Para os arquivos normais .c
+    exec arm-linux-musleabihf-gcc -march=armv7-a -mfpu=vfpv4 -mfloat-abi=hard -D__LINUX_ARM_ARCH__=7 "$@"
+fi
